@@ -32,6 +32,7 @@ let kind = named_field ~name:"kind" Record.{
                 | Talk -> "talk"
                 | Book -> "book"
                 | Poster -> "poster"
+                | Other s -> s
                    );
              from= ( function
                 | "article" -> Article
@@ -39,7 +40,7 @@ let kind = named_field ~name:"kind" Record.{
                 | "talk" -> Talk
                 | "book" -> Book
                 | "poster" -> Poster
-                | s  -> raise @@ Unknown_attribute ("kind",s)  )
+                | s  -> Other s  )
            }
 
 let title = str_field ~name:"title"
